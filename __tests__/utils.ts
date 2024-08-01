@@ -39,8 +39,8 @@ export const webhookBodyFields: {
 	textMessage: {
 		type: "text",
 		from: "",
-		id: 32,
-		timestamp: 21,
+		id: "32",
+		timestamp: "21",
 		text: {
 			body: "Hi",
 		},
@@ -48,8 +48,8 @@ export const webhookBodyFields: {
 	message: {
 		type: "audio",
 		from: "",
-		id: 32,
-		timestamp: 21,
+		id: "32",
+		timestamp: "21",
 		text: {
 			body: "Hi",
 		},
@@ -70,7 +70,7 @@ export const webhookBodyFields: {
 		biz_opaque_callback_data: "",
 		recipient_id: "",
 		status: "read",
-		timestamp: 465,
+		timestamp: "465",
 	},
 	error: { code: 2, title: "ERR", message: "ERR", error_data: { details: "" } },
 };

@@ -32,8 +32,8 @@ export type WebhookMedia = {
 	/**
 	 * Name for the file on the sender's device
 	 */
-	filename: string;
-	ha256: string;
+	filename?: string;
+	sha256: string;
 	mime_type: string;
 	/**
 	 * ID for the file
@@ -48,11 +48,11 @@ export type WebhookMessage = {
 	/**
 	 * The type of message that has been received by the business that has subscribed to Webhooks.
 	 */
-	type: MessageType | "system" | "unknown";
+	type: MessageType | "system" | "unknown" | "request_welcome";
 	/**
 	 * The time when the customer sent the message to the business in unix format
 	 */
-	timestamp: number;
+	timestamp: string;
 	/**
 	 * When the messages type is set to audio, including voice messages, this object is included in the messages object:
 	 */
@@ -70,6 +70,49 @@ export type WebhookMessage = {
 		payload: string;
 		text: string;
 	};
+	/**
+	 * When the messages type field is set to contact, this object is included in the messages object:
+	 */
+	contacts?: [
+		{
+			addresses?: {
+				city?: string;
+				country?: string;
+				country_code?: string;
+				state?: string;
+				street?: string;
+				type?: string;
+				zip?: string;
+			}[];
+			birthday?: string;
+			emails?: {
+				email: string;
+				type?: string;
+			}[];
+			name?: {
+				formatted_name?: string;
+				first_name?: string;
+				last_name?: string;
+				middle_name?: string;
+				suffix?: string;
+				prefix?: string;
+			};
+			org?: {
+				company?: string;
+				department?: string;
+				title?: string;
+			};
+			phones?: {
+				phone: string;
+				wa_id?: string;
+				type?: string;
+			}[];
+			urls?: {
+				url: string;
+				type?: string;
+			}[];
+		},
+	];
 	/**
 	 * Context object. Only included when a user replies or interacts with one of your messages. Context objects can have the following properties
 	 */
@@ -114,7 +157,7 @@ export type WebhookMessage = {
 	/**
 	 * The ID for the message that was received by the business. You could use messages endpoint to mark it as read.
 	 */
-	id: number;
+	id: string;
 	/**
 	 * A webhook is triggered when a customer's phone number or profile information has been updated.
 	 */
@@ -137,30 +180,47 @@ export type WebhookMessage = {
 	 * When a customer selected a button or list reply.
 	 */
 	interactive?: {
-		type: {
+		type: string;
+		/**
+		 * Sent when a customer clicks a button
+		 */
+		button_reply?: {
 			/**
-			 * Sent when a customer clicks a button
+			 *  Unique ID of a button
 			 */
-			button_reply?: {
-				/**
-				 *  Unique ID of a button
-				 */
-				id: string;
-				title: string;
-			};
+			id: string;
+			title: string;
+		};
+		/**
+		 *  Sent when a customer selects an item from a list
+		 */
+		list_reply?: {
 			/**
-			 *  Sent when a customer selects an item from a list
+			 * Unique ID of the selected list item
 			 */
-			list_reply?: {
-				/**
-				 * Unique ID of the selected list item
-				 */
-				id: string;
-				title: string;
-				description: string;
-			};
+			id: string;
+			title: string;
+			description: string;
+		};
+		/**
+		 *  Sent when a user submits a flow
+		 */
+		nfm_reply?: {
+			body: string;
+			name: string;
+			response_json: string;
 		};
 	};
+	/**
+	 * When the messages type field is set to location, this object is included in the messages object:
+	 */
+	location?: {
+		latitude: string;
+		longitude: string;
+		name?: string;
+		address?: string;
+	};
+
 	/**
 	 * Included in the messages object when a customer has placed an order. Order objects have the following properties:
 	 */
@@ -340,7 +400,7 @@ export type WebhookStatus = {
 	/**
 	 * Date for the status message in unix
 	 */
-	timestamp: number;
+	timestamp: string;
 };
 
 export type WebhookMetadata = {
@@ -352,7 +412,7 @@ export type WebhookChange = {
 	value: {
 		messaging_product: "whatsapp";
 		metadata: WebhookMetadata;
-		errors: WebhookError[];
+		errors?: WebhookError[];
 		contacts: WebhookContact[];
 		messages?: WebhookMessage[];
 		statuses?: WebhookStatus[];

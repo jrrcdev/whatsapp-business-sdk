@@ -1,3 +1,40 @@
+# [1.11.0](https://github.com/MarcosNicolau/whatsapp-business-sdk/compare/v1.10.0...v1.11.0) (2024-07-29)
+
+
+### Features
+
+* ✨ added location object types to webhooks ([38e86ab](https://github.com/MarcosNicolau/whatsapp-business-sdk/commit/38e86ab48c54255ba39e3a7d80d1d01c086f09c5))
+* ✨ added request_welcome as message type ([3320d28](https://github.com/MarcosNicolau/whatsapp-business-sdk/commit/3320d28a4ff4f062bc631cf28b6dcd5ff3ae5efe))
+
+# [1.10.0](https://github.com/MarcosNicolau/whatsapp-business-sdk/compare/v1.9.0...v1.10.0) (2024-05-30)
+
+
+### Features
+
+* ✨ added support for cta_url interactive message type ([2e43fcb](https://github.com/MarcosNicolau/whatsapp-business-sdk/commit/2e43fcb29feee98be81f647d2c5076680325641a))
+
+# [1.9.0](https://github.com/MarcosNicolau/whatsapp-business-sdk/compare/v1.8.2...v1.9.0) (2024-05-30)
+
+
+### Features
+
+* ✨ added nfm_reply typings to webhooks ([8cbdebe](https://github.com/MarcosNicolau/whatsapp-business-sdk/commit/8cbdebe208a7a386aebec50d7e3d482008ba8a87))
+
+## [1.8.2](https://github.com/MarcosNicolau/whatsapp-business-sdk/compare/v1.8.1...v1.8.2) (2024-05-29)
+
+
+### Bug Fixes
+
+* 🐛 message.ts ([eed637c](https://github.com/MarcosNicolau/whatsapp-business-sdk/commit/eed637c5d294447fa235d7f5e6051301f5c5e03e)), closes [#32](https://github.com/MarcosNicolau/whatsapp-business-sdk/issues/32)
+
+## [1.8.1](https://github.com/MarcosNicolau/whatsapp-business-sdk/compare/v1.8.0...v1.8.1) (2024-05-27)
+
+
+### Bug Fixes
+
+* 🐛 interactive message optional fields ([de9662d](https://github.com/MarcosNicolau/whatsapp-business-sdk/commit/de9662d4a4709b53174022af5fbd425cb1b6b47a)), closes [#30](https://github.com/MarcosNicolau/whatsapp-business-sdk/issues/30)
+* 🐛 webhook timestamp type ([bc6f579](https://github.com/MarcosNicolau/whatsapp-business-sdk/commit/bc6f57908bfdf011fcbbf58e176d393d5edf2b71))
+
 # [1.8.0](https://github.com/MarcosNicolau/whatsapp-business-sdk/compare/v1.7.2...v1.8.0) (2024-02-01)
 
 
