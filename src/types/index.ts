@@ -3,6 +3,7 @@ export * from "./error";
 export * from "./media";
 export * from "./media";
 export * from "./messages";
+export * from "./messageTemplate";
 export * from "./phoneNumbers";
 export * from "./registration";
 export * from "./response";

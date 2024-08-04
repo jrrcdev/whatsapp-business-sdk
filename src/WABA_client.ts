@@ -22,6 +22,10 @@ import {
 	BusinessPhoneNumber,
 	UpdateIdentityCheckState,
 	HealthStatusResponse,
+	MessageTemplateFieldsQuery,
+	MessageTemplate,
+	CreateMessageTemplatePayload,
+	MessageTemplateFields,
 } from "./types";
 import { WABAErrorHandler } from "./utils/errorHandler";
 import { createRestClient } from "./utils/restClient";
@@ -78,6 +82,32 @@ export class WABAClient {
 			{
 				...payload,
 				messaging_product: "whatsapp",
+			}
+		);
+	}
+	/*
+	 *
+	 *MESSAGE TEMPLATE ENDPOINTS (https://developers.facebook.com/docs/graph-api/reference/whats-app-business-account/message_templates)
+	 */
+	/**
+	 *
+	 * Retrieves your message template.
+	 *
+	 * @param fields you can specify which data you want to get from your business. If not passed, defaults to all fields.
+	 */
+	getMessageTemplates(fields?: MessageTemplateFieldsQuery) {
+		return this.restClient.get<MessageTemplate[]>(`${this.accountId}/message_templates`, {
+			fields: fields?.join(",") || "name,components,language,status,category,id",
+		});
+	}
+	/**
+	 * @param payload provide the fields that you wish to update.
+	 */
+	createMessageTemplate(payload: CreateMessageTemplatePayload) {
+		return this.restClient.post<DefaultResponse, Partial<MessageTemplateFields>>(
+			`${this.accountId}/message_templates`,
+			{
+				...payload,
 			}
 		);
 	}
