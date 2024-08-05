@@ -93,7 +93,7 @@ export class WABAClient {
 	 *
 	 * Retrieves your message template.
 	 *
-	 * @param fields you can specify which data you want to get from your business. If not passed, defaults to all fields.
+	 * @param fields you can specify which data you want to get from Message Templates. If not passed, defaults to all fields.
 	 */
 	getMessageTemplates(fields?: MessageTemplateFieldsQuery) {
 		return this.restClient.get<MessageTemplate>(`${this.accountId}/message_templates`, {
@@ -101,7 +101,7 @@ export class WABAClient {
 		});
 	}
 	/**
-	 * @param payload provide the fields that you wish to update.
+	 * @param payload provide the fields that you wish to create.
 	 */
 	createMessageTemplate(payload: CreateMessageTemplatePayload) {
 		return this.restClient.post<DefaultResponse, Partial<MessageTemplateFields>>(
