@@ -96,7 +96,7 @@ export class WABAClient {
 	 * @param fields you can specify which data you want to get from your business. If not passed, defaults to all fields.
 	 */
 	getMessageTemplates(fields?: MessageTemplateFieldsQuery) {
-		return this.restClient.get<MessageTemplate[]>(`${this.accountId}/message_templates`, {
+		return this.restClient.get<MessageTemplate>(`${this.accountId}/message_templates`, {
 			fields: fields?.join(",") || "name,components,language,status,category,id",
 		});
 	}
